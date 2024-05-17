@@ -277,10 +277,6 @@ def build_model():
     x = layers.Dense(64, activation="relu", name="dense1")(x)
     x = layers.Dropout(0.2)(x)
 
-    # RNN
-    x = layers.Bidirectional(layers.LSTM(128, return_sequences=True, dropout=0.25))(x)
-    x = layers.Bidirectional(layers.LSTM(64, return_sequences=True, dropout=0.25))(x)
-
     # Выходной слой
     x = layers.Dense(
         len(char_to_num.get_vocabulary()) + 1, activation="softmax", name="dense2"
